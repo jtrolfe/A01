@@ -3,16 +3,9 @@ package percolation;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-public int size;
-
+	public int size;
 	private boolean[][] matrix;
 	private WeightedQuickUnionUF quf;
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public Percolation(int n) {
 		size = n;
@@ -21,6 +14,9 @@ public int size;
 	}
 	
 	public void open(int i, int j) {
+		if (i < 0 || i >= size) throw new IndexOutOfBoundsException("row index " + i + " must be between 0 and " + (size-1));
+		if (j < 0 || j >= size) throw new IndexOutOfBoundsException("column index " + j + " must be between 0 and " + (size-1));
+		
 		matrix[i][j] = true;
 		
 		if(i==0) {
@@ -70,6 +66,8 @@ public int size;
 	}
 	
 	public boolean isOpen(int i, int j) {
+		if (i < 0 || i >= size) throw new IndexOutOfBoundsException("row index " + i + " must be between 0 and " + (size-1));
+		if (j < 0 || j >= size) throw new IndexOutOfBoundsException("column index " + j + " must be between 0 and " + (size-1));
 		return matrix[i][j];
 		
 	}
@@ -79,6 +77,8 @@ public int size;
 	}
 	
 	public boolean isFull(int i, int j) {
+		if (i < 0 || i >= size) throw new IndexOutOfBoundsException("row index " + i + " must be between 0 and " + (size-1));
+		if (j < 0 || j >= size) throw new IndexOutOfBoundsException("column index " + j + " must be between 0 and " + (size-1));
 		return quf.connected(this.xyTo1d(i, j), 0);
 	}
 	
